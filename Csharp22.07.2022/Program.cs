@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Csharp22._07._2022
 {
@@ -28,7 +29,8 @@ namespace Csharp22._07._2022
                 }
             }
 
-            Console.WriteLine("[1] Добавить участника\n[2] Удалить участника");
+            Console.WriteLine("[1] Добавить участника\n[2] Удалить участника" +
+                "\n[3] Редактировать участника");
 
             switch (Console.ReadLine())
             {
@@ -43,7 +45,19 @@ namespace Csharp22._07._2022
                 case "2":
                     {
                         vyvod();
-                        uchasniki.RemoveAt(Uchastniki.Enter_age("Введите id:") - 1);
+                        uchasniki.RemoveAt(Uchastniki.Enter_age("Введите id: ") - 1);
+                        vyvod();
+                        break;
+                    }
+                    case "3":
+                    {
+                        vyvod();
+                        Console.WriteLine("Введите id: ");
+                        int index = int.Parse(Console.ReadLine()) - 1;
+                        Console.WriteLine("Введите имя: ");
+                        uchasniki.ElementAt(index).Name = String.Format(Console.ReadLine());
+                        Console.WriteLine("Введите возраст: ");
+                        uchasniki.ElementAt(index).Age = int.Parse(Console.ReadLine());
                         vyvod();
                         break;
                     }
